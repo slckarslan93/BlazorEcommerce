@@ -1,8 +1,8 @@
+global using BlazorEcommerce.Server.Data;
+global using BlazorEcommerce.Server.Services.CategoryService;
+global using BlazorEcommerce.Server.Services.ProductService;
 global using BlazorEcommerce.Shared;
 global using Microsoft.EntityFrameworkCore; // globol olarak buraya da ekleyebilirsin using i 
-global using BlazorEcommerce.Server.Data;
-global using BlazorEcommerce.Server.Services.ProductService;
-using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +20,7 @@ builder.Services.AddSwaggerGen();
 
 //Services
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 
