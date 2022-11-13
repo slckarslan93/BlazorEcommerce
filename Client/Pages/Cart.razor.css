@@ -35,3 +35,7 @@
     .btn-delete:hover {
         text-decoration: underline;
     }
+
+.input-quantity{
+    width:70px;
+}
