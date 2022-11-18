@@ -10,8 +10,8 @@
 @code {
     private int GetCartItemsCount()
     {
-        var cart = LcoalStorage.GetItem<List<CartItem>>("cart");
-        return cart != null ? cart.Count : 0;
+        var count = LcoalStorage.GetItem<int>("cartItemsCount");
+        return count;
 
     }
 
