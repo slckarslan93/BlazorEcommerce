@@ -26,7 +26,7 @@ namespace BlazorEcommerce.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<ServiceResponse<List<CartProductResponse>>>> StoreCartItems(List<CartItem> cartItems)
         {
-            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+           
             var result = await _cartService.StoreCartItems(cartItems);
             return Ok(result);
         }
@@ -35,7 +35,19 @@ namespace BlazorEcommerce.Server.Controllers
         {
             return await _cartService.GetCartItemsCount();
         }
-
+        [HttpGet]
+        public async Task<ActionResult<ServiceResponse<List<CartProductResponse>>>> GetDbCartProducts()
+        {
+            var result = await _cartService.GetDbCartProducts();
+            return Ok(result);  
+        }
+        [HttpPost("add")]
+        public async Task<ActionResult<ServiceResponse<bool>>> AddToCart(CartItem cartItems)
+        {
+            
+            var result = await _cartService.AddToCart(cartItems);
+            return Ok(result);
+        }
 
     }
 }
