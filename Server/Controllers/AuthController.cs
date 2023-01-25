@@ -19,7 +19,7 @@ namespace BlazorEcommerce.Server.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult<ServiceResponse<int>>> Register(UserRegister request)
         {
-            var response = await _authService.Register(new User 
+            var response = await _authService.Register(new User
             {
                 Email = request.Email
             },
@@ -43,7 +43,7 @@ namespace BlazorEcommerce.Server.Controllers
             return Ok(response);
         }
 
-        [HttpPost("change-password"),Authorize]
+        [HttpPost("change-password"), Authorize]
         public async Task<ActionResult<ServiceResponse<bool>>> ChangePassword([FromBody] string newPassword)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

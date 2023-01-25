@@ -1,5 +1,5 @@
 .navbar-toggler {
-   color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.1);
 }
 
 .top-row {
@@ -21,10 +21,8 @@
 .nav-item {
     font-size: 0.9rem;
     padding-bottom: 0.5rem;
-    padding-top:0.5rem;
+    padding-top: 0.5rem;
 }
-
-   
 
     .nav-item ::deep a {
         color: #d7d7d7;
@@ -35,27 +33,25 @@
         line-height: 3rem;
     }
 
-.nav-item ::deep a.active {
-    background-color: rgba(255,255,255,0.25);
-    color: white;
-}
+        .nav-item ::deep a.active {
+            background-color: rgba(255,255,255,0.25);
+            color: white;
+        }
 
-.nav-item ::deep a:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-}
-
-
+        .nav-item ::deep a:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
 
 @media (min-width: 641px) {
-    .navbar-toggler,.navbar-toggler-wrapper {
+    .navbar-toggler, .navbar-toggler-wrapper {
         display: none;
     }
+
     .flex-nav {
         flex-direction: row;
-        display:flex;
+        display: flex;
     }
-
 
     .collapse {
         /* Never collapse the sidebar for wide screens */

@@ -1,5 +1,4 @@
 ﻿using Blazored.LocalStorage;
-using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text.Json;
@@ -16,6 +15,7 @@ namespace BlazorEcommerce.Client
             _localStorageService = localStorageService;
             _http = http;
         }
+
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
             string authToken = await _localStorageService.GetItemAsStringAsync("authToken");
@@ -54,6 +54,7 @@ namespace BlazorEcommerce.Client
             }
             return Convert.FromBase64String(base64);
         }
+
         private IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
         {
             var payload = jwt.Split('.')[1];

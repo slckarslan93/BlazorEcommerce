@@ -1,6 +1,4 @@
-﻿using BlazorEcommerce.Client.Pages;
-using BlazorEcommerce.Shared;
-using Blazored.LocalStorage;
+﻿using Blazored.LocalStorage;
 
 namespace BlazorEcommerce.Client.Services.CartService
 {
@@ -38,7 +36,6 @@ namespace BlazorEcommerce.Client.Services.CartService
                 if (sameItem == null)
                 {
                     cart.Add(cartItem);
-
                 }
                 else
                 {
@@ -49,8 +46,6 @@ namespace BlazorEcommerce.Client.Services.CartService
 
             await GetCartItemsCount();
         }
-
-
 
         public async Task GetCartItemsCount()
         {
@@ -65,7 +60,6 @@ namespace BlazorEcommerce.Client.Services.CartService
             {
                 var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
                 await _localStorage.SetItemAsync<int>("cartItemsCount", cart != null ? cart.Count : 0);
-
             }
 
             OnCahange.Invoke();
@@ -91,7 +85,6 @@ namespace BlazorEcommerce.Client.Services.CartService
 
                 return cartProducts.Data;
             }
-
         }
 
         public async Task RemoveProductFromCart(int productId, int productTypeId)
@@ -113,11 +106,8 @@ namespace BlazorEcommerce.Client.Services.CartService
                 {
                     cart.Remove(cartItem);
                     await _localStorage.SetItemAsync("cart", cart);
-                    
                 }
             }
-            
-
         }
 
         public async Task StoreCartItems(bool emptyLocalCart = false)
@@ -132,7 +122,6 @@ namespace BlazorEcommerce.Client.Services.CartService
             {
                 await _localStorage.RemoveItemAsync("cart");
             }
-
         }
 
         public async Task UpdateQuantity(CartProductResponse product)
@@ -160,12 +149,10 @@ namespace BlazorEcommerce.Client.Services.CartService
                 {
                     cartItem.Quantity = product.Quantity;
                     await _localStorage.SetItemAsync("cart", cart);
-
                 }
             }
-
-
         }
+
         private async Task<bool> IsUserAuthenticated()
         {
             return (await _authStateProvider.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated;

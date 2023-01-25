@@ -13,16 +13,16 @@ img {
     margin-bottom: 10px;
 }
 
-img:hover{
-    transform:scale(1.1) rotate(5deg);
-}
+    img:hover {
+        transform: scale(1.1) rotate(5deg);
+    }
 
 .featured-products {
     margin: 10px;
     text-align: center;
     padding: 10px;
     border: 1px solid;
-    border-color:lightgray;
+    border-color: lightgray;
     border-radius: 10px;
     max-width: 200px;
 }

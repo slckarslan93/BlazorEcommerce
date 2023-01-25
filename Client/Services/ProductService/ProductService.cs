@@ -1,7 +1,4 @@
-﻿using BlazorEcommerce.Shared;
-using System.Net.Http.Json;
-
-namespace BlazorEcommerce.Client.Services.ProductService
+﻿namespace BlazorEcommerce.Client.Services.ProductService
 {
     public class ProductService : IProductService
     {
@@ -13,18 +10,19 @@ namespace BlazorEcommerce.Client.Services.ProductService
         }
 
         public event Action ProductsCahanged;
+
         public List<Product> Products { get; set; } = new List<Product>();
         public string Message { get; set; } = "Loading products...";
         public int CurrentPage { get; set; } = 1;
         public int PageCount { get; set; } = 0;
         public string LastSearchText { get; set; } = string.Empty;
 
-
         public async Task<ServiceResponse<Product>> GetProduct(int productId)
         {
             var result = await _http.GetFromJsonAsync<ServiceResponse<Product>>($"api/product/{productId}");
             return result;
         }
+
         public async Task GetProducts(string? categoryUrl = null)
         {
             var result = categoryUrl == null ?
@@ -43,11 +41,11 @@ namespace BlazorEcommerce.Client.Services.ProductService
             ProductsCahanged.Invoke();
         }
 
-        public async Task SearchProducts(string searchText,int page)
+        public async Task SearchProducts(string searchText, int page)
         {
             LastSearchText = searchText;
             var result = await _http.GetFromJsonAsync<ServiceResponse<ProductSearchResult>>($"api/product/search/{searchText}/{page}");
-            if (result != null && result.Data !=null)
+            if (result != null && result.Data != null)
             {
                 Products = result.Data.Products;
                 CurrentPage = result.Data.CurrentPage;

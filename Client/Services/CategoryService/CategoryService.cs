@@ -14,10 +14,8 @@
         public async Task GetCategories()
         {
             var response = await _http.GetFromJsonAsync<ServiceResponse<List<Category>>>("api/Category");
-            if(response != null && response.Data !=null)
+            if (response != null && response.Data != null)
                 Categories = response.Data;
-            
-
         }
     }
 }

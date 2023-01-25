@@ -1,6 +1,5 @@
 ﻿using BlazorEcommerce.Server.Services.AuthService;
 using BlazorEcommerce.Server.Services.CartService;
-using System.Security.Claims;
 
 namespace BlazorEcommerce.Server.Services.OrderService
 {
@@ -10,14 +9,12 @@ namespace BlazorEcommerce.Server.Services.OrderService
         private readonly ICartService _cartService;
         private readonly IAuthService _authService;
 
-        public OrderService(DataContext context,ICartService cartService,IAuthService authService)
+        public OrderService(DataContext context, ICartService cartService, IAuthService authService)
         {
             _context = context;
             _cartService = cartService;
             _authService = authService;
         }
-
-       
 
         public async Task<ServiceResponse<bool>> PlaceOrder()
         {
@@ -29,9 +26,9 @@ namespace BlazorEcommerce.Server.Services.OrderService
             products.ForEach(product => orderItems.Add(new OrderItem
             {
                 ProductId = product.ProductId,
-                ProductTypeId= product.ProductTypeId,
-                Quantity= product.Quantity,
-                TotalPrice= product.Price * product.Quantity
+                ProductTypeId = product.ProductTypeId,
+                Quantity = product.Quantity,
+                TotalPrice = product.Price * product.Quantity
             }));
 
             var order = new Order
@@ -47,7 +44,7 @@ namespace BlazorEcommerce.Server.Services.OrderService
 
             await _context.SaveChangesAsync();
 
-            return new ServiceResponse<bool> {Data= true};  
+            return new ServiceResponse<bool> { Data = true };
         }
     }
 }
