@@ -1,7 +1,7 @@
-﻿using BlazorEcommerce.Server.Services.AuthService;
+﻿using System.Security.Claims;
+using BlazorEcommerce.Server.Services.AuthService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace BlazorEcommerce.Server.Controllers
 {
